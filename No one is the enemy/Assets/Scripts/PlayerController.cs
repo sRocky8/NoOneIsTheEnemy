@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(transform.position, Vector3.forward, out hitNumber, Mathf.Infinity, badNumbersLayer))
             {
                 Destroy(hitNumber.transform.gameObject);
+                Debug.DrawRay(transform.position, ,);
             }
             if (Physics.Raycast(transform.position, Vector3.forward, out hitNumber, Mathf.Infinity, onesLayer))
             {

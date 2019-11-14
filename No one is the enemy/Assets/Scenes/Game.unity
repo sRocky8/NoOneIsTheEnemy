@@ -132,8 +132,9 @@ GameObject:
   - component: {fileID: 1102658587}
   - component: {fileID: 1102658586}
   - component: {fileID: 1102658585}
+  - component: {fileID: 1102658589}
   m_Layer: 8
-  m_Name: Cube (1)
+  m_Name: TestEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,12 +206,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102658584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6.14}
+  m_LocalPosition: {x: 5.29, y: 0.5, z: 6.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1102658589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102658584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59521d9d8ad25f46b83671c10360fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistanceDelta: 0.01
+  explosion: {fileID: 4460629232673989216, guid: 1adcab0a461b4b44c9a59f300611c372,
+    type: 3}
+  player: {fileID: 1278621581}
 --- !u!1 &1194164654
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +417,7 @@ GameObject:
   - component: {fileID: 1278621586}
   - component: {fileID: 1278621587}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

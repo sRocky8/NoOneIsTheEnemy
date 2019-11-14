@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     //Private Variables
     private int badNumbersLayer = 1 << 8;
     private int onesLayer = 1 << 9;
+    [SerializeField] private GameObject enemyExplosion;
 
     void Start()
     {
@@ -25,28 +26,33 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (health > 0)
         {
-            transform.Rotate(-Vector3.up, turnSpeed, Space.World);
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(Vector3.up, turnSpeed, Space.World);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RaycastHit hitNumber;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitNumber, Mathf.Infinity, badNumbersLayer))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                Destroy(hitNumber.transform.gameObject);
-                score += 1;
-                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitNumber.distance, Color.yellow);
+                transform.Rotate(-Vector3.up, turnSpeed, Space.World);
             }
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitNumber, Mathf.Infinity, onesLayer))
+            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                Destroy(hitNumber.transform.gameObject);
-                score -= 1;
+                transform.Rotate(Vector3.up, turnSpeed, Space.World);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                RaycastHit hitNumber;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitNumber, Mathf.Infinity, badNumbersLayer))
+                {
+                    Instantiate(enemyExplosion, hitNumber.transform.position, Quaternion.identity);
+                    Destroy(hitNumber.transform.gameObject);
+                    score += 1;
+                    //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitNumber.distance, Color.yellow);
+                }
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitNumber, Mathf.Infinity, onesLayer))
+                {
+                    Instantiate(enemyExplosion, hitNumber.transform.position, Quaternion.identity);
+                    Destroy(hitNumber.transform.gameObject);
+                    score -= 1;
+                }
             }
         }
     }

@@ -16,18 +16,8 @@ public class Enemy : MonoBehaviour
         transform.LookAt(player.transform);
     }
 
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, maxDistanceDelta);
-    }
-
-    private void OnDestroy()
-    {
-        Instantiate(explosion, transform.position, Quaternion.identity);
     }
 }

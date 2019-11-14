@@ -10,6 +10,8 @@ public class GameUIController : MonoBehaviour
 
     //Private Variables
     [SerializeField] private GameObject player;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Slider healthSlider;
     private int Health
     {
         get { return player.GetComponent<PlayerController>().health; }
@@ -18,14 +20,10 @@ public class GameUIController : MonoBehaviour
     {
         get { return player.GetComponent<PlayerController>().score; }
     }
-
-    void Start()
-    {
-        
-    }
     
     void Update()
     {
-        
+        healthSlider.value = Health;
+        scoreText.text = "Score: " + Score;
     }
 }

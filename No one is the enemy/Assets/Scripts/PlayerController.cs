@@ -50,4 +50,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy"){
+            Destroy(other.gameObject);
+            health -= 1;
+        }
+    }
 }

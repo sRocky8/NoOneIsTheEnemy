@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private int badNumbersLayer = 1 << 8;
     private int onesLayer = 1 << 9;
     [SerializeField] private GameObject enemyExplosion;
+    //[SerializeField] private Transform target;
+    //[SerializeField] private float smoothTime;
+    //[SerializeField] private float velocity;
 
     void Start()
     {
@@ -31,6 +34,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Rotate(-Vector3.up, turnSpeed, Space.World);
+                //float newRotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, transform.eulerAngles.y - turnSpeed, ref velocity, smoothTime); //
+                //transform.rotation = Quaternion.Euler(0, newRotation, 0);
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {

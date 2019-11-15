@@ -21,11 +21,6 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemyCoRoutine());
     }
 
-    void Update()
-    {
-        
-    }
-
     private IEnumerator SpawnEnemyCoRoutine()
     {
         secondsToSpawn = Random.Range(1, 4);

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private int badNumbersLayer = 1 << 8;
     private int onesLayer = 1 << 9;
     [SerializeField] private GameObject enemyExplosion;
+    [SerializeField] private AudioSource hurt;
+    [SerializeField] private AudioSource healed;
     //[SerializeField] private Transform target;
     //[SerializeField] private float smoothTime;
     //[SerializeField] private float velocity;
@@ -56,9 +58,13 @@ public class PlayerController : MonoBehaviour
                 {
                     Instantiate(enemyExplosion, hitNumber.transform.position, Quaternion.identity);
                     Destroy(hitNumber.transform.gameObject);
-                    score -= 1;
+                    score -= 11;
                 }
             }
+        }
+        if(score < 0)
+        {
+            score = 0;
         }
     }
 
@@ -67,6 +73,13 @@ public class PlayerController : MonoBehaviour
         if(other.tag == "Enemy"){
             Destroy(other.gameObject);
             health -= 1;
+            hurt.Play();
+        }
+        if (other.tag == "One")
+        {
+            Destroy(other.gameObject);
+            health += 1;
+            healed.Play();
         }
     }
 }

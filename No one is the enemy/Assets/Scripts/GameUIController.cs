@@ -44,7 +44,7 @@ public class GameUIController : MonoBehaviour
 
         if (Health <= 0)
         {
-            if(turnedOnDeathUI){
+            if(turnedOnDeathUI == false){
                 Destroy(enemySpawner.gameObject);
                 AliveOrNotUI(false, true);
 
@@ -82,6 +82,6 @@ public class GameUIController : MonoBehaviour
         startOver.gameObject.SetActive(deathUIOn);
         exitGame.gameObject.SetActive(deathUIOn);
         gameOverText.gameObject.SetActive(deathUIOn);
-        highScoreText.gameObject.SetActive(deathUIOn);
+//        highScoreText.gameObject.SetActive(deathUIOn);
     }
 }

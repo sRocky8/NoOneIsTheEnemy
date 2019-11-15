@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
     //Public Variables
     public float turnSpeed;
     public int health;
+    [SerializeField] public GameObject shot;
+    [SerializeField] public GameObject shotTrail;
+
+
+
     [HideInInspector] public int score;
 
     //Private Variables
@@ -46,6 +51,9 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                shotTrail.SetActive(true);
+                shot.SetActive(true);
+
                 RaycastHit hitNumber;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitNumber, Mathf.Infinity, badNumbersLayer))
                 {
@@ -60,6 +68,13 @@ public class PlayerController : MonoBehaviour
                     Destroy(hitNumber.transform.gameObject);
                     score -= 11;
                 }
+
+
+            }
+            else
+            {
+                shotTrail.SetActive(false);
+                shot.SetActive(false);
             }
         }
         if(score < 0)

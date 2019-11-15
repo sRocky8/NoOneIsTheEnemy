@@ -78,8 +78,6 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "One")
         {
             Destroy(other.gameObject);
-            health += 1;
-            healed.Play();
         }
     }
 }

@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemyCoRoutine()
     {
-        secondsToSpawn = Random.Range(1, 4);
+        secondsToSpawn = Random.Range(1, 3);
         yield return new WaitForSeconds(secondsToSpawn);
         newEnemyTransform = Random.insideUnitSphere * radius;
         if(newEnemyTransform.x < noSpawnRadius * radius)
